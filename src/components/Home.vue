@@ -1,27 +1,28 @@
 <template>
-  <div class="home">
-    <mu-button color="primary" href="#/one">
-      CLICK
-      <mu-icon value="check_circle" right></mu-icon>
-    </mu-button>
-    <router-view></router-view>
+  <div class="home-wrapper">
+    <v-header></v-header>
+    <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'home',
-  data () {
-    return {
-      msg: 'Please Log In'
+  import header from './header/header.vue';
+  export default {
+    name: 'home',
+    components:{
+      'v-header':header
+    },
+    data () {
+      return {
+        msg: 'Please Log In'
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  mu-button {
-    margin: 6px 8px;
+  .aa{
+    height: 1000px;
   }
 </style>

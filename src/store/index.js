@@ -34,13 +34,12 @@ const store = new Vuex.Store({
   },
   actions:{
     initStatus({ commit }) {
-      const feToken = cookie.get('token')
-      console.log("/*/*/*/*/*/" + feToken);
+      console.log(cookie);
+      const feToken = cookie.get('token');
       if (feToken !== undefined && feToken.length > 0) {
         try {
           const obj = JSON.parse(feToken)
-          if (obj.access_token && obj.access_token.length > 0) {
-            console.log('loged in')
+          if (obj.username && obj.username.length > 0) {
             commit('SET_USRE_INFO', obj)
             commit('SET_USRE_LOGIN', true)
           }
@@ -50,18 +49,6 @@ const store = new Vuex.Store({
       } else {
         console.log('did not login')
       }
-    },
-    onLogout({ commit }) {
-      console.log('onLogout')
-      cookie.remove('token', { domain: '.zeunpro.com' })
-      commit('SET_USRE_INFO', {})
-    },
-    setSaveChecked({ commit },data) {
-      commit('SET_SAVE_CHECKED',data);
-    },
-    //获取用户详情
-    getPersonOrgan({ commit },data) {
-      commit('GET_PERSON_ORGAN',data);
     }
   }
 });

@@ -1,5 +1,5 @@
 <template>
-  <mu-container>
+  <mu-container class="login">
     <img src="../assets/logo.png">
     <mu-form ref="form" :model="validateForm" class="mu-demo-form">
       <mu-form-item label="用户名" prop="username" :rules="usernameRules">
@@ -18,7 +18,6 @@
 
 <script>
   import {login} from '../api/api';
-  import store from '../store/index';
   import Cookies from 'js-cookie';
 
   export default {
@@ -43,19 +42,15 @@
     methods: {
       submit() {
         this.$refs.form.validate().then((result) => {
-          console.log('****form valid: ', result)
           if(result){
             login(this.validateForm).then((res) => {
-              console.log(">>>登录返回参数",res);
               if(res != null && res.data.code === "0"){
-                store.state.isLoged = true;
-                store.state.userInfo = res.data.data;
-                console.log(Cookies);
+                Cookies.set("token", res.data.data, 1);
                 this.$message({
                   message: '登录成功！',
                   type: 'success'
                 });
-                window.location.href = 'http://localhost:8080/#/home';
+                window.location.href = 'http://localhost:8080';
               }else{
                 this.$message({
                   message: '用户名或密码错误！',
@@ -81,6 +76,9 @@
 </script>
 
 <style scoped>
+  .login{
+    text-align: center;
+  }
   .mu-demo-form {
     margin: auto;
     width: 100%;
