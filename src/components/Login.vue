@@ -19,6 +19,7 @@
 <script>
   import {login} from '../api/api';
   import Cookies from 'js-cookie';
+  import store from '../store/index'
 
   export default {
     name: "login",
@@ -50,7 +51,7 @@
                   message: '登录成功！',
                   type: 'success'
                 });
-                window.location.href = 'http://localhost:8080';
+                window.location.href = store.state.localUrl;
               }else{
                 this.$message({
                   message: '用户名或密码错误！',
