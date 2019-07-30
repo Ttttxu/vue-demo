@@ -7,7 +7,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   // 定义状态
   state: {
-    localUrl: 'http://120.78.68.168',
+    // localUrl: 'http://120.78.68.168',
+    localUrl: 'http://localhost:8080',
     userInfo: {},
     isLoged: false,
     //用户详情

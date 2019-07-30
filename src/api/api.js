@@ -1,7 +1,8 @@
 import axios from 'axios';
 import http from './axios';
 
-let base = 'http://120.78.68.168:1101/';
+let base = 'http://10.83.3.4:1101/';
+// let base = 'http://120.78.68.168:1101/';
 
 // 修改当前登录用户密码
 export const login = params => { return axios.post(`${base}user/login`, params); };

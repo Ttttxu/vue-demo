@@ -76,6 +76,8 @@
           {value:3, label:"交通"},
           {value:4, label:"娱乐"},
           {value:5, label:"住房"},
+          {value:6, label:"百货"},
+          {value:7, label:"其他"},
         ],
         //列表数据
         tableData: [],
@@ -165,6 +167,10 @@
             return "娱乐";
           case 5:
             return "住房";
+          case 6:
+            return "百货";
+          case 7:
+            return "其他";
         }
       }
     },
